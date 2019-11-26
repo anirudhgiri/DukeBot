@@ -1,0 +1,14 @@
+{
+  "name": "dukebot",
+  "version": "1.0.0",
+  "description": "General Purpose Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anirudh Giri",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
