@@ -26,7 +26,7 @@ bot.on("message", msg =>{
         return;
     //if the first letter of the message is our prefix, it is a bot command
     if(msg.content.substring(0,prefix.length) == prefix){
-        commandProcessor.processCommand(msg);
+        commandProcessor.processCommand(msg,prefix);
     }
 });
 
