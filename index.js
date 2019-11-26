@@ -10,17 +10,13 @@ DukeBot, A General Purpose Discord Bot
 const discord = require("discord.js");
 const bot = new discord.Client();
 
+require("dotenv").config();
+
 const commandProcessor = require("./commands/commandProcessor");
 
-//the token and (opionally) the prefix should be provided as arguments in the terminal (node index.js [token] [optional_prefix]) 
-if(process.argv.length < 3){
-    console.error("Bot Token Not Provided!");
-    return;
-}
+const token = process.env.CLIENT_TOKEN;
 
-const token = process.argv[2]; //the client token is the 3rd argument (node index.js [token])
-
-let prefix = (process.argv.length < 4) ? '!' : process.argv[3]; //the prefix is the fourth argument. If not specified, it takes the default prefix '!' 
+let prefix =  '!';
 
 bot.on("ready", () => console.log(`Logged in as ${bot.user.tag} in ${bot.guilds.size} server(s)!`));
 
@@ -29,7 +25,7 @@ bot.on("message", msg =>{
     if(msg.author.bot)
         return;
     //if the first letter of the message is our prefix, it is a bot command
-    if(msg.content[0] == prefix){
+    if(msg.content.substring(0,prefix.length) == prefix){
         commandProcessor.processCommand(msg);
     }
 });
